@@ -84,39 +84,3 @@ end
 
 
 welcome
-
-
-# def chat_menu(chat_room)
-#   until choice == "\e"
-#     puts "\nWhat would you like to do?"
-#     puts "Press 'l' to enter chat."
-#     puts "Press 'r' for recent messages list."
-#     puts "Press 'p' to post a message."
-#     puts "Press [esc] to exit."
-#     case choice = gets.chomp
-#     when 'l'
-#       live_chat
-#     when 'r'
-#       recents_list
-#     when 'p'
-#       new_post
-#     when 'x'
-#       exit
-#     else
-#       puts "Invalid!"
-#     end
-#   end
-# end
-
-# def recents_list
-#   puts "Here are the recent message in chat: "
-#   messages = Message.all
-#   messages.map {|message| puts display(message)}
-# end
-
-# def new_post
-#   puts "Enter the message to post:"
-#   print "post: "
-#   comment = gets.chomp
-#   Message.entry(:screen_name => @screen_name, :comment => comment)
-# end
