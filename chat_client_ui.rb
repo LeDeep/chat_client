@@ -34,7 +34,7 @@ end
 def recents_list
   puts "Here are the recent message in chat: "
   messages = Message.all
-  messages.map {|message| puts display(message)}-
+  messages.map {|message| puts display(message)}
 end
 
 def new_post
@@ -56,9 +56,7 @@ def live_chat
     input = nil
     until input == ''
       puts "\e[H\e[2J"
-      Message.all.each do |message|
-        puts display(message)
-      end
+      Message.all.each {|message| puts display(message)}
       begin
         Timeout.timeout(5) {input = gets.chomp}
       rescue Timeout::Error
