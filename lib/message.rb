@@ -1,11 +1,12 @@
 class Message
 
-  attr_reader :comment, :screen_name, :created_at
+  attr_reader :comment, :screen_name, :created_at, :status
 
   def initialize(attributes)
     @screen_name = attributes[:screen_name]
     @comment = attributes[:comment]
     @created_at = attributes[:created_at]
+    @status = attributes[:status]
   end
 
   def self.entry(attributes)
