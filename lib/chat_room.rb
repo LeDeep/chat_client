@@ -34,8 +34,10 @@ attr_reader :topic, :started_by, :created_at, :id
       request.url "#{OUR_URL}/chat_rooms/#{id}"
       request.headers['Content-Type'] = 'application/json'
     end
-    room = JSON.parse(response.body, :symbolize_names => true)
-    ChatRoom.new(room[:chat_room])
+    if response.status == 200
+      room = JSON.parse(response.body, :symbolize_names => true)
+      ChatRoom.new(room[:chat_room])
+    end
   end
 
   def ==(other)

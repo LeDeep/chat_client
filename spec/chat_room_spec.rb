@@ -7,7 +7,7 @@ describe ChatRoom do
   let(:new_chat_room) {ChatRoom.new(:started_by => screen_name, :topic => topic, :id => room_id)}
   let(:created_chat_room) {ChatRoom.create(:started_by => screen_name, :topic => topic)}
   let(:get_id_stub) {stub_request(:get, "#{OUR_URL}/chat_rooms/#{room_id}").
-    to_return(:body => "[{\"chat_room\":{\"started_by\":\"#{screen_name}\",\"topic\":\"#{topic}\",\"id\":\"#{room_id}\"}}]")}
+    to_return(:body => "{\"chat_room\":{\"started_by\":\"#{screen_name}\",\"topic\":\"#{topic}\",\"id\":\"#{room_id}\"}}")}
   let(:get_all_stub) {stub_request(:get, "#{OUR_URL}/chat_rooms").
     to_return(:body => "[{\"chat_room\":{\"started_by\":\"#{screen_name}\",\"topic\":\"#{topic}\",\"id\":\"#{room_id}\"}}]")}
   let(:post_stub) {stub_request(:post, "#{OUR_URL}/chat_rooms").

@@ -20,7 +20,7 @@ def main_menu
       start_chat
     when 'j'
       join
-    when 'x'
+    when "\e"
       exit
     else
       puts "Invalid!"
@@ -29,7 +29,7 @@ def main_menu
 end
 
 def start_chat
-  puts "Please enter a topic for the chat room: "
+  puts "Please enter a topic for the new chat room: "
   topic = gets.chomp
   puts "You can now post a message to chat room #{topic}."
   new_chat = ChatRoom.create({:started_by => @screen_name, :topic => topic})
@@ -38,11 +38,16 @@ def start_chat
 end
 
 def join
-  ChatRoom.all.each {|room| puts "ID: #{room.id}\n Topic: #{room.topic}\nStarted by: #{room.started_by}\n\n"}
+  ChatRoom.all.each {|room| puts "ID: #{room.id}\nTopic: #{room.topic}\nStarted by: #{room.started_by}\n\n"}
   puts "Please enter the ID of the chat room you would like to join: "
   id_input = gets.chomp
-  @chat_room = ChatRoom.get(id_input)
-  live_chat
+  chosen_room = ChatRoom.get(id_input)
+  if chosen_room
+    @chat_room = chosen_room
+    live_chat
+  else
+    puts "Error: That chat room wasn't found."
+  end
 end 
 
 def post(text)
